@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Rayman244/Social-Networker/issues"
   },
-  "homepage": "https://github.com/Rayman244/Social-Networker#readme"
+  "homepage": "https://github.com/Rayman244/Social-Networker#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.0"
+  }
 }
