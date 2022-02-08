@@ -1,7 +1,11 @@
 const mongoose = require('mongoose')
+const {users} = require('./data')
 const userSchema = new mongoose.Schema({
     username: {type: String, required: true, unique: true, trim:true },
-    email:{ type:String, required:true, unique:true }
+    email:{ type:String, required:true, unique:true },
+    thoughts:{type:Array},
+    friends:{type:Array}
+
 })
 const User = mongoose.model('User', userSchema)
 const handleError = (err) => console.error(err);
@@ -12,19 +16,11 @@ User.find({}).exec((err, collection) => {
     }
     if (collection.length === 0) {
       return User.insertMany(
-        [
-            { username: 'rayhewitt42',email:"rayhewitt42@gmail.com" },
-            { username: 'johnjones12',email:"martianmanhunter@mail.com" },
-            { username: 'Hulk234',email:"bbscience@lab.com" },
-            { username: 'IronmanMKIII',email:"rdj@mail.com"},
-            { username: 'BlackWidow234',email:"scarletj@mail.com" },
-            { username: 'HawlkEye08',email:"bullseye01@mail.com" },
-            { username: 'ThorOdenson',email:"strongestavenger@.mail" },
-        ],
+        users,
         (insertError) =>
-          insertError ? handleError(insertError) : console.log('Inserted')
+          insertError ? handleError(insertError) : console.log('Inserted Users')
       );
     }
-    return console.log('Already populated');
+    return console.log('Already populated Users');
   });
 module.exports = User
