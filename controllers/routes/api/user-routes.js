@@ -2,15 +2,21 @@ const router = require("express").Router();
 const { User } = require("../../../models");
 
 // Get All Users
-router.get("/all-users", (req, res) => {
+router.get("/all-users", async (req, res) => {
   // Using model in route
-  User.find({}, (err, result) => {
+  try {
+     const users = await User.find({}, (err, result) => {
     if (err) {
       res.status(500).send({ message: "Internal Server Error" });
     } else {
       res.status(200).json(result);
     }
-  });
+  })
+  .populate('Thought');
+  } catch (error) {
+    
+  }
+
 });
 
 // Get by User Id
