@@ -76,19 +76,24 @@ const users = [
     ]  },
 ]
 const thoughts = [
-    {"thoughtText":"This is a Thought",
+    {"_id":ObjectId("6203c14bd9cbea24f3be361c"),
+    "thoughtText":"This is a Thought",
     "username":"rayhewitt42"},
 
-    {"thoughtText":"I am from mars to protect","username":
+    {"_id":ObjectId("6203c14bd9cbea24f3be361d"),
+    "thoughtText":"I am from mars to protect","username":
     "johnjones12"},
 
-    {"thoughtText":"Hulk Smash!!","username":
+    {"_id":ObjectId("6203c14bd9cbea24f3be361e"),
+    "thoughtText":"Hulk Smash!!","username":
     "Hulk234"},
 
-    {"thoughtText":"Jarvis, is the AI system I created",
+    {"_id":ObjectId("6203c14bd9cbea24f3be361f"),
+    "thoughtText":"Jarvis, is the AI system I created",
     "username":"IronmanMKIII"},
 
-    {"thoughtText":"I am from Asgard","username":
+    {"_id":ObjectId("6203c14bd9cbea24f3be3620"),
+    "thoughtText":"I am from Asgard","username":
     "ThorOdenson"},
     
 

@@ -69,5 +69,6 @@ module.exports = {
             { $pull: { friends: req.params.id } }
           )
         .catch((err)=>res.status(500).json(err))
+    
     },
 }
