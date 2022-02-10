@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Thought = require('../models/Thought')
 module.exports = {
         getUsers(req,res){
         User.find()
@@ -38,17 +39,28 @@ module.exports = {
             res.status(500).json({ error: "Please enter a valad email or password" });
           } else {
             updatedUser.save();
-            res.status(201).json(updatedUser);
+            res.status(200).json(updatedUser);
           }
           } catch (error) {
           console.log(error);
           }
     },
-    deleteUser(req,res){
-        User.findByIdAndDelete(req.params.id)
-        .then((user)=>res.status(200).json(user))
-        .catch((err)=>res.status(500).json(err))
-       
+    // Delete user
+    deleteUser(req, res) {
+      User.findOneAndRemove({ _id: req.params.id })
+        .then((user) =>{  
+          if(!user){
+            res.status(404).json("none found")
+          }else{
+            Thought.deleteMany({username: user.username})
+            .then(res.json("User and thoughts deleted!"))
+          }
+            
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json(err);
+        });
     },
     addFriend(req,res){
         User.findByIdAndUpdate(req.params.id,{$addToSet:{friends: req.body.id}})
